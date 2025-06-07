@@ -7,11 +7,11 @@ void checkArgs(int argc, char* argv[]) {
         bool valid = false;
 
         try {
-            int value = stoi(arg.substr(4));
+            value = stoi(arg.substr(4));
             valid = true;
         }
-        catch (std::invalid_argument&) { printf("Недопустимый формат параметра %s", arg.c_str()); }
-        catch (std::out_of_range&) { printf("Выход за допустимые границы int  %s", arg.c_str()); }
+        catch (std::invalid_argument&) { printf("Недопустимый формат параметра %s\n", arg.c_str()); }
+        catch (std::out_of_range&) { printf("Выход за допустимые границы int  %s\n", arg.c_str()); }
         if (not valid) continue;
 
         if ((arg.rfind("--w=", 0) == 0) and (value >= config::MIN_GRIDLINE_SIZE and value <= config::MAX_GRIDLINE_SIZE))
@@ -20,7 +20,7 @@ void checkArgs(int argc, char* argv[]) {
             Grid::setHeight(value);
         else if ((arg.rfind("--s=", 0) == 0) and (value >= config::MIN_SPEED and value <= config::MAX_SPEED))
             Grid::setSpeed(value);
-        else printf("Недопустимый параметр %s - игнорируется", arg.c_str());
+        else printf("Недопустимый параметр %s - игнорируется\n", arg.c_str());
     }
 }
 
